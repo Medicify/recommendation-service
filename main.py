@@ -5,7 +5,7 @@ from config import DEBUG, PORT
 import uvicorn
 
 
-server = FastAPI(docs_url="/documentation",debug=DEBUG)
+server = FastAPI(docs_url="/api/recommendation/documentation",debug=DEBUG)
 
 routes(server)
 origins = ["*"]

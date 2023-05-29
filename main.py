@@ -15,6 +15,3 @@ server.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=Tru
 @server.on_event("startup")
 def startup():
     print(f"server running on PORT {PORT}")
-
-if __name__ == "__main__":
-    uvicorn.run("main:server",host="127.0.0.1", port=PORT, log_level="info", reload=True)

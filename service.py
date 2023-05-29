@@ -20,7 +20,7 @@ responsePayload = {
     }
 }
 
-@recommendationRoute.post('/recommendation')
+@recommendationRoute.post('/api/recommendation')
 def recommendation(request : RecommendationPayload):
     drugs = requests.get(DRUG_SERVICE_URL)
     drugs = drugs.json()["response"]["data"]

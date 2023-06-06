@@ -4,7 +4,7 @@ from config import DRUG_SERVICE_URL
 from pydantic import BaseModel
 import mysql.connector
 from config import DB_USER, DB_PASSWORD, DB_DATABASE, DB_HOST
-
+import re
 
 select_query = "select * from drugs where id = %s"
 ctx = mysql.connector.connect(user=DB_USER, password=DB_PASSWORD,
@@ -40,6 +40,8 @@ def recommendation(request : RecommendationPayload):
     columns = cursor.description 
     drug = [{columns[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
 
+    if(len(drug) > 0):
+        drug[0]["title"] = re.split("[\d.]", drug[0]['title'])[0]
 
 
     responsePayload["request"] = request

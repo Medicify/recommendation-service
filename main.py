@@ -5,7 +5,11 @@ from config import DEBUG, PORT
 import uvicorn
 
 
+
 server = FastAPI(docs_url="/api/recommendation/documentation",debug=DEBUG)
+
+# BASE_URL = os.environ.get("BASE_URL")
+
 
 routes(server)
 origins = ["*"]

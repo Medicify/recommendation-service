@@ -10,7 +10,12 @@ RUN apt update && \
 
 COPY . ./
 
-ENV DRUG_SERVICE_URL=http://34.36.211.221/api/drugs
+
+ENV DB_HOST=localhost
+ENV DB_USER=root
+ENV DB_PASSWORD=
+ENV DB_DATABASE=drug_capstone
+
 ENV PORT=5050
 
 CMD ["uvicorn", "main:server", "--host", "0.0.0.0", "--port", "5050"]

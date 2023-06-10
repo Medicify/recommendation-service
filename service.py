@@ -43,7 +43,8 @@ def recommendation(request : RecommendationPayload):
     if(len(drug) > 0):
         drug[0]["title"] = re.split("[\d.]", drug[0]['title'])[0]
 
-
+    cursor.close()
+    ctx.close()   
     responsePayload["request"] = request
     responsePayload['response']['data'] = drug[0] if len(drug) > 0 else None
     return responsePayload

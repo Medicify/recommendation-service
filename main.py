@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from routes import routes
 from config import DEBUG, PORT
 import uvicorn
@@ -7,7 +8,7 @@ import uvicorn
 
 
 server = FastAPI(docs_url="/api/recommendation/documentation",debug=DEBUG)
-
+server.mount("/api/recommendation/static", StaticFiles(directory="assets"), name="assets")
 # BASE_URL = os.environ.get("BASE_URL")
 
 

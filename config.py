@@ -11,3 +11,7 @@ DB_HOST = os.environ.get("DB_HOST")
 DB_USER = os.environ.get("DB_USER")
 DB_PASSWORD = os.environ.get("DB_PASSWORD")
 DB_DATABASE = os.environ.get("DB_DATABASE")
+
+BASE_URL = os.environ.get("BASE_URL")
+
+STATIC_URL = f"{BASE_URL}/api/recommendation/static"

@@ -1,5 +1,4 @@
 from fastapi import APIRouter,HTTPException,status
-import requests
 from config import DRUG_SERVICE_URL
 from pydantic import BaseModel
 import mysql.connector

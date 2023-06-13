@@ -108,7 +108,7 @@ def recommendation(request : RecommendationPayload):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=responsePayload)
 
     
-    df_cosine = pd.read_csv(f'{STATIC_URL}/cosine_similarity_table.csv')
+    df_cosine = pd.read_csv("https://raw.githubusercontent.com/Medicify/recommendation-service/master/assets/cosine_similarity_table.csv")
     df_drug_per_class = read_csv_to_dict("assets/drugs_per_class.csv")
     drugs_in_class = find_drugs_in_class(df_drug_per_class, input_drugs)
 

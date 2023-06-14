@@ -90,11 +90,11 @@ Example Response
         "id": "b55ed7f4-05cd-11ee-9de2-42010afc"
     },
     "response": {
-        "data": {
-            "id": "b55ed7f4-05cd-11ee-9de2-42010afc",
-            example data}
-            }
-            }
+        "data": {example_data},
+        "recommendation" : [example_data]
+           
+            
+            
 ```
 
 ## Documentation

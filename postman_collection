@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "ad58449d-a521-425c-ba60-083fe336b562",
+		"name": "Recommendation Service Production",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "drug recommendations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('status code should be 200 (OK)', () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('response header Content-Type should be application/json', () => {\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.equals('application/json');\r",
+							"});\r",
+							"\r",
+							"pm.test('response body should be an object', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test('service should be recommendation service', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.service).to.equal(\"recommendation service\");\r",
+							"});\r",
+							"\r",
+							"pm.test('service should have recommendation', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.response.recommendation).to.be.an(\"array\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"status should return success\", () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.status).equals('success');\r",
+							"}) \r",
+							"\r",
+							"pm.test(\"response data should have correct key\", () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('id');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('image');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('title');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('product_url');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('description');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('indication');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('dose');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('compotition');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('attention');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('how_to_use');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('side_effect');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('product_class');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('package');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('manufactur');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('bpom');\r",
+							"    pm.expect(responseJson.response.data).to.haveOwnProperty('indication_contra');\r",
+							"    pm.expect(responseJson.response).to.haveOwnProperty('recommendation');\r",
+							"}) \r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"b55ed7f4-05cd-11ee-9de2-42010afc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host_production}}/api/recommendation",
+					"protocol": "http",
+					"host": [
+						"{{host_production}}"
+					],
+					"path": [
+						"api",
+						"recommendation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

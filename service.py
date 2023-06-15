@@ -87,6 +87,7 @@ def recommendation(request : RecommendationPayload):
     drug = [{columns_drug[index][0]:column for index, column in enumerate(value)} for value in cursor.fetchall()]
     if(len(drug) > 0):
         drug[0]["title"] = re.split("[\d.]", drug[0]['title'])[0]
+        drug[0]["custom_image"] = None if drug[0]["type"] is None else f"http://34.149.156.145/assets/{drug[0]['type'].lower()}.png" 
     
     cursor.close()
     ctx.close()   
@@ -146,6 +147,9 @@ def recommendation(request : RecommendationPayload):
     if len(data_kirim) > 0:
         for recommended_drug in data_kirim:
             recommended_drug["title"] = re.split("[\d.]", recommended_drug['title'])[0]
+            recommended_drug["custom_image"] = None if recommended_drug["type"] is None else f"http://34.149.156.145/assets/{recommended_drug['type'].lower()}.png" 
+    
+   
     
     responsePayload['status']= "success"
     responsePayload['message']= "recommendation service success get drug"
